@@ -3,18 +3,38 @@ const db = require('../models');
 module.exports = function(app) {
 
     app.get('/', (req, res) => {
-        db.Project.findAll({ where: { isFeatured: true }}).then(featuredProjects => {
-            db.Testimonial.findAll({where: { isFeatured: true }}).then(featuredTestimonial => {
-                db.Service.findAll({}).then(services => {
+        db.Project.findAll({ where: { isFeatured: true } }).then(featuredProjects => {
+            db.Testimonial.findAll({where: { isFeatured: true }}).then(featuredTestimonials => {
+                fetchAndFormatServices(function(formattedServices) {
 
                     var data = {
-                        projects: featuredProjects,
-                        testimonials: featuredTestimonials,
-                        services: services
+                        projects: [],
+                        testimonials: [],
+                        services: formattedServices
                     }
-    
-                    res.render('index', data);
+                    // Format Other Sequelize results for Handlebars
+                    featuredTestimonials.forEach(testimonial => {
+                        data.testimonials.push({
+                            quote: testimonial.quote,
+                            person: testimonial.person,
+                            position: testimonial.position,
+                        });
+                    });
 
+                    featuredProjects.forEach(project => {
+                        data.projects.push({
+                            name: project.name,
+                            desc: project.desc,
+                            img: project.img,
+                            url: project.url,
+                            services: project.services,
+                            category: project.category
+                        });
+                    });
+
+                    console.log(data);
+
+                    res.render('index', data);
                 });
             });
         });
@@ -45,7 +65,26 @@ module.exports = function(app) {
     });
 
     app.get('/about', (req,res) => {
-        res.render('about');
+        fetchAndFormatServices(function(services) {
+            var serv = {
+                services: services
+            }
+            res.render('about', serv);
+        });
+        
     });
 
+}
+
+function fetchAndFormatServices(callback) {
+    db.Service.findAll({ attributes: ['service']}).then(services => {
+        var serv = [];
+        services.forEach(service => {
+            serv.push({
+                service: service.service
+            });
+        });
+        callback(serv);
+        return;
+    });
 }

@@ -1,6 +1,5 @@
 const express = require('express');
-const handlebars = require('handlebars');
-const mongo = require('mongojs');
+const handlebars = require('express-handlebars');
 
 const app = express();
 const PORT = process.env.PORT | 3000;
@@ -9,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+app.engine("handlebars", handlebars({ defaultLayout: "main", helpers: require('./app/config/handlebars.js') }));
 app.set("view engine", "handlebars");
 
 require("./app/routes/apiRoutes.js")(app);

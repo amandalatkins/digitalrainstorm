@@ -2,13 +2,17 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-middle">
             <div class="small-12 medium-6 cell">
-                <a href="{{url}}" target="_blank" rel="nofollow"><img src="/img/portfolio/{{img}}"/></a>
+                <a href="{{project.url}}" target="_blank" rel="nofollow"><img src="/img/portfolio/{{project.img}}"/></a>
             </div>
             <div class="small-12 medium-6 cell port-description">
-                    <p class="title">{{name}}</p>
-                    <p class="service">{{services}}</p>
-                    <p class="description">{{desc}}</p>
-                    <a class="port-link button orange outline" href="{{url}}" target="_blank" onclick="ga('send', 'event','Visit: {{name}}');">Visit Site <span class="fa fa-external-link"></span></a>
+                    <p class="title">{{project.name}}</p>
+                    <p class="service">{{project.services}}</p>
+                    <p class="description">{{{project.desc}}}</p>
+                    {{#ifEquals project.category "web"}}
+                        <a class="port-link button orange outline" href="{{project.url}}" target="_blank" onclick="ga('send', 'event','Visit: {{project.name}}');">Visit Site <span class="fa fa-external-link"></span></a>
+                    {{else}}
+                        <a class="port-link button orange outline" href="{{project.url}}" target="_blank" onclick="ga('send', 'event','Visit: {{project.name}}');">GitHub Repo <span class="fa fa-external-link"></span></a>
+                    {{/ifEquals}}
             </div>
         </div>
     </div>

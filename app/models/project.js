@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
         desc: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING(1000)
         },
         img: {
             type: DataTypes.STRING,
@@ -21,12 +21,13 @@ module.exports = function(sequelize, DataTypes) {
         category: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
         order: {
-            type: DataTypes.NUMBER
+            type: DataTypes.INTEGER
         },
         isFeatured: {
             type: DataTypes.BOOLEAN,
+            allowNull: false,
             defaultValue: false
         }
     },

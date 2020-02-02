@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Testimonial = sequelize.define("Testimonial", {
         quote: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(1000),
             allowNull: false,
         },
         person: {
