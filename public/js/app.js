@@ -105,21 +105,21 @@ $(document).ready(function() {
 			$('body').css('cursor','wait');
 
 			var dataObj = {
-					"yourName" : $('#yourName').val(),
-					"yourEmail" : $('#yourEmail').val(),
-					"yourPhone" : $('#yourPhone').val(),
-					"yourSite" : $('#yourSite').val(),
-					"yourMessage" : $('#yourMessage').val()
-				};
+				name: $('#yourName').val().trim(),
+				email: $('#yourEmail').val().trim(),
+				phone: $('#yourPhone').val().trim(),
+				website : $('#yourSite').val().trim(),
+				message: $('#yourMessage').val().trim(),
+				to: "amanda@digitalrainstorm.com"
+			};
 			$.ajax({
 				type: "POST",
 				data: dataObj,
-				url: "/js/sendemail.php",
-				success: function( response )
-				{
-					$('body').css('cursor','default');
-					$('.email-response').append('Thank you! Your email was sent. I\'ll be in touch soon!');
-				}
+				url: "/api/email"
+			}).then(success => {
+				$('body').css('cursor','default');
+				$('.email-response').append('Thank you! Your email was sent. I\'ll be in touch soon!');
+				$('#contactForm')[0].reset();
 			});
 		}
 	});
