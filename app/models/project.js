@@ -5,8 +5,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
         desc: {
-            type: DataTypes.STRING,
-            allowNull: true,
+            type: DataTypes.STRING
         },
         img: {
             type: DataTypes.STRING,
@@ -17,9 +16,19 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
         services:  {
-            type: DataTypes.STRING,
-            allowNull: true,
+            type: DataTypes.STRING
         },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+        order: {
+            type: DataTypes.NUMBER
+        },
+        isFeatured: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
     },
     {
         timestamps: false

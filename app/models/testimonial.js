@@ -11,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
         position: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        isFeatured: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     },
     {

@@ -1,18 +1,48 @@
 const db = require('../models');
 
-
 module.exports = function(app) {
 
     app.get('/', (req, res) => {
-        db.
+        db.Project.findAll({ where: { isFeatured: true }}).then(featuredProjects => {
+            db.Testimonial.findAll({where: { isFeatured: true }}).then(featuredTestimonial => {
+
+                var data = {
+                    projects: featuredProjects,
+                    testimonials: featuredTestimonials
+                }
+
+                res.render('index', data);
+
+            });
+        });
     });
 
-    app.get('/portfolio/web', (req, res) => {});
+    app.get('/portfolio/web', (req, res) => {
+        db.Project.findAll({ where: { category: "web" }}).then(webProjects => {
+            var projects = {
+                projects: webProjects
+            }
+            
+            res.render('portfolio', projects);
+        });
+    });
 
-    app.get('/portfolio/apps', (req,res) => {});
+    app.get('/portfolio/apps', (req,res) => {
+        db.Project.findAll({ where: { category: "app" }}).then(appProjects => {
+            var projects = {
+                projects: appProjects
+            }
+            
+            res.render('portfolio', projects);
+        });
+    });
 
-    app.get('/portfolio', (req,res) => {});
+    app.get('/portfolio', (req,res) => {
+        res.redirect('/portfolio/web');
+    });
 
-    app.get('/about', (req,res) => {});
+    app.get('/about', (req,res) => {
+        res.render('about');
+    });
 
 }
