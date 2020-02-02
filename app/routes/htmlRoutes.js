@@ -5,14 +5,17 @@ module.exports = function(app) {
     app.get('/', (req, res) => {
         db.Project.findAll({ where: { isFeatured: true }}).then(featuredProjects => {
             db.Testimonial.findAll({where: { isFeatured: true }}).then(featuredTestimonial => {
+                db.Service.findAll({}).then(services => {
 
-                var data = {
-                    projects: featuredProjects,
-                    testimonials: featuredTestimonials
-                }
+                    var data = {
+                        projects: featuredProjects,
+                        testimonials: featuredTestimonials,
+                        services: services
+                    }
+    
+                    res.render('index', data);
 
-                res.render('index', data);
-
+                });
             });
         });
     });

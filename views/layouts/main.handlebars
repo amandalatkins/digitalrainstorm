@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-61583255-2"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-61583255-2');
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-K9PMNKW');</script>
+	<!-- End Google Tag Manager -->
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="web design, web development, wordpress, mobile app design, web app development, user experience, user interface, amanda atkins, digital rainstorm, api integration, concrete5">
+	<meta property="og:image" content="/img/dr-og-img.png"/>
+
+	<title>Digital Rainstorm | Engaging Web Experiences</title>
+
+	<link rel="stylesheet" href="https://use.typekit.net/kvg4eqj.css">
+	<link rel="stylesheet" href="/css/foundation.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>	
+	<link rel="stylesheet" href="/css/style-main.css"/>
+	
+	<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+	
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9PMNKW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+{{{ body }}}
+
+<footer id="letschat">
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="small-12 medium-2 cell">&nbsp;</div>
+			<div class="small-12 medium-8 cell">
+				<p><strong>LET'S CHAT.</strong></p>
+				<p>Tell me about your project needs. I’ll be in touch soon to learn more.</p>
+
+				<form id="contactForm">
+
+					<div class="grid-x grid-margin-x">
+						<div class="small-12 medium-6 cell">
+							<input type="text" placeholder="Your Name*" id="yourName" required/>
+						</div>
+						<div class="small-12 medium-6 cell">
+							<input type="email" placeholder="Your Email*" id="yourEmail" required/>
+						</div>
+					</div>
+
+					<div class="grid-x grid-margin-x">
+						<div class="small-12 medium-6 cell">
+							<input type="tel" placeholder="Your Phone" id="yourPhone"/>
+						</div>
+						<div class="small-12 medium-6 cell">
+							<input type="text" placeholder="Your Website" id="yourSite"/>
+						</div>
+					</div>
+
+					<div class="grid-x grid-margin-x">
+						<div class="small-12 cell">
+							<textarea id="yourMessage" placeholder="How can I help you? Please include details about your project and desired timeframe." required></textarea>
+						</div>
+					</div>
+
+					<div class="email-response"></div>
+
+					<div class="grid-x grid-margin-x">
+						<div class="small-12 medium-6 cell" id="honeypot">
+							<input type="checkbox" name="confirm">
+						</div>
+						<div class="small-12 medium-6 cell">
+							<input type="submit" class="button" id="submitEmail" value="Send Message" onclick="ga('send', 'event', 'Contact Form Submission');"/>		
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+			<div class="small-12 medium-2 cell">&nbsp;</div>
+	</div>
+
+</footer>
+
+<script src="/js/jquery-3.3.1.min.js" defer></script>
+<script src="/js/vendor/what-input.js" defer></script>
+<script src="/js/vendor/foundation.min.js" defer></script>
+<script src="/js/contact.js" defer></script>
+<script src="/js/morphext.min.js" defer></script>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

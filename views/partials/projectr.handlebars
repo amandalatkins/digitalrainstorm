@@ -1,0 +1,30 @@
+<section class="port-piece show-on-desktop">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-middle">
+            <div class="small-12 medium-6 cell port-description">
+                    <p class="title">{{name}}</p>
+                    <p class="service">{{services}}</p>
+                    <p class="description">{{desc}}</p>
+                    <a class="port-link button orange outline" href="{{url}}" target="_blank" onclick="ga('send', 'event', 'Visit: {{name}}');">Visit Site <span class="fa fa-external-link"></span></a>
+            </div>
+            <div class="small-12 medium-6 cell">
+                <a href="{{url}}" target="_blank" rel="nofollow"><img src="/img/portfolio/{{img}}"/></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="port-piece show-on-mobile">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-middle">
+            <div class="small-12 medium-6 cell">
+                <a href="{{url}}" target="_blank" rel="nofollow"><img src="/img/portfolio/{{img}}"/></a>
+            </div>
+            <div class="small-12 medium-6 cell port-description">
+                    <p class="title">{{name}}</p>
+                    <p class="service">{{services}}</p>
+                    <p class="description">{{desc}}</p>
+                    <a class="port-link button orange outline" href="{{url}}" target="_blank" onclick="ga('send', 'event', 'Visit: {{name}}');">Visit Site <span class="fa fa-external-link"></span></a>
+            </div>
+        </div>
+    </div>
+</section>
