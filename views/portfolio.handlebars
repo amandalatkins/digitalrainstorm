@@ -1,0 +1,21 @@
+{{>nav services=services notHome=true}}
+
+<div class="top-padding"></div>
+
+<section class="page-title">
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="small-12 cell">
+				<h3>Portfolio</h3>
+			</div>
+		</div>
+	</div>
+</section>
+
+{{#each projects}}
+    {{#ifEven @index}}
+        {{> project project=project}}
+    {{else}}
+        {{> projectr project=project}}
+    {{/ifEven}}
+{{/each}}

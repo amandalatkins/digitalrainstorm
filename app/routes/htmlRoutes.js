@@ -6,57 +6,32 @@ module.exports = function(app) {
         db.Project.findAll({ where: { isFeatured: true } }).then(featuredProjects => {
             db.Testimonial.findAll({where: { isFeatured: true }}).then(featuredTestimonials => {
                 fetchAndFormatServices(function(formattedServices) {
-
-                    var data = {
-                        projects: [],
-                        testimonials: [],
-                        services: formattedServices
-                    }
-                    // Format Other Sequelize results for Handlebars
-                    featuredTestimonials.forEach(testimonial => {
-                        data.testimonials.push({
-                            quote: testimonial.quote,
-                            person: testimonial.person,
-                            position: testimonial.position,
+                    formatProjects(featuredProjects, function(projects) {
+                        formatTestimonials(featuredTestimonials, function(testimonials) {
+                            var data = {
+                                projects: projects,
+                                testimonials: testimonials,
+                                services: formattedServices
+                            }
+                            res.render('index', data);
                         });
                     });
-
-                    featuredProjects.forEach(project => {
-                        data.projects.push({
-                            name: project.name,
-                            desc: project.desc,
-                            img: project.img,
-                            url: project.url,
-                            services: project.services,
-                            category: project.category
-                        });
-                    });
-
-                    console.log(data);
-
-                    res.render('index', data);
                 });
             });
         });
     });
 
-    app.get('/portfolio/web', (req, res) => {
-        db.Project.findAll({ where: { category: "web" }}).then(webProjects => {
-            var projects = {
-                projects: webProjects
-            }
-            
-            res.render('portfolio', projects);
-        });
-    });
-
-    app.get('/portfolio/apps', (req,res) => {
-        db.Project.findAll({ where: { category: "app" }}).then(appProjects => {
-            var projects = {
-                projects: appProjects
-            }
-            
-            res.render('portfolio', projects);
+    app.get('/portfolio/:cat', (req, res) => {
+        db.Project.findAll({ where: { category: req.params.cat }, order: [['order','ASC']]}).then(appProjects => {
+            formatProjects(appProjects, function(projects) {
+                fetchAndFormatServices(function(services) {
+                    var data = {
+                        projects: projects,
+                        services: services
+                    }
+                    res.render('portfolio', data);
+                });
+            });
         });
     });
 
@@ -84,7 +59,33 @@ function fetchAndFormatServices(callback) {
                 service: service.service
             });
         });
-        callback(serv);
-        return;
+        return callback(serv);
     });
+}
+
+function formatProjects(projects, callback) {
+    var proj = [];
+    projects.forEach(project => {
+        proj.push({ project: {
+            name: project.name,
+            desc: project.desc,
+            img: project.img,
+            url: project.url,
+            services: project.services,
+            category: project.category
+        } });
+    });
+    return callback(proj);
+}
+
+function formatTestimonials(testimonials, callback) {
+    var test = [];
+    testimonials.forEach(testimonial => {
+        test.push({
+            quote: testimonial.quote,
+            person: testimonial.person,
+            position: testimonial.position,
+        });
+    });
+    return callback(test);
 }
