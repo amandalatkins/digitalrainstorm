@@ -1,20 +1,29 @@
 module.exports = function(sequelize, DataTypes) {
-    var Testimonial = sequelize.define("Testimonial", {
-        quote: {
+    var Project = sequelize.define("Project", {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        person: {
+        desc: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        img: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        position: {
+        url:  {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        services:  {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
     },
     {
         timestamps: false
     });
-    return Testimonial;
+
+    return Project;
 }
