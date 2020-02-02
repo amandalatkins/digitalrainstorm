@@ -13,6 +13,7 @@ module.exports = function(app) {
                                 testimonials: testimonials,
                                 services: formattedServices
                             }
+                            console.log(data.projects[0]);
                             res.render('index', data);
                         });
                     });
