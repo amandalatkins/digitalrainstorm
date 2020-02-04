@@ -25,7 +25,8 @@ $(document).ready(function() {
 	navContainer = $('.nav-container'),
 	$window = $(window),
 	footer = $('footer'),
-	honey = $('#honeypot');
+	honey = $('#honeypot'),
+	home = $('.home-page');
 
 	// Mobile Nav Toggle Open and Close Action
 
@@ -42,12 +43,12 @@ $(document).ready(function() {
 	// Nav bar sticking to top
 
 	$window.scroll(function() {
-		if (!$('.nav-container.top-fixed').length) {
+		if (home.length) {
 			navPlacement($window, navContainer, navDistance);
 		}
 	});
 
-	if (!$('.nav-container.top-fixed').length) {
+	if (home.length) {
 		setDistances(navContainer);
 	}
 
