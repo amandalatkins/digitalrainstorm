@@ -1,14 +1,7 @@
 const nodemailer = require("nodemailer");
+const emailCreds = require("../config/email.json")["production"];
 
-const email = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 587,
-    secure: false,
-    auth: {
-        user: "4f8caed21ac95f",
-        pass: "441641079fad6b"
-    }
-});
+const email = nodemailer.createTransport(emailCreds);
 
 email.verify((err, success) => {
     if (err) return console.log(err);
