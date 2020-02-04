@@ -13,7 +13,6 @@ module.exports = function(app) {
                                 testimonials: testimonials,
                                 services: formattedServices
                             }
-                            console.log(data.projects[0]);
                             res.render('index', data);
                         });
                     });
@@ -23,7 +22,8 @@ module.exports = function(app) {
     });
 
     app.get('/portfolio/:cat', (req, res) => {
-        db.Project.findAll({ where: { category: req.params.cat }, order: [['order','ASC']]}).then(appProjects => {
+        db.Project.findAll({ where: { category: req.params.cat }, order: [['order','ASC']]})
+        .then(appProjects => {
             formatProjects(appProjects, function(projects) {
                 fetchAndFormatServices(function(services) {
                     var data = {

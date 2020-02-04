@@ -25,8 +25,7 @@ $(document).ready(function() {
 	navContainer = $('.nav-container'),
 	$window = $(window),
 	footer = $('footer'),
-	honey = $('#honeypot'),
-	home = $('.home-page');
+	honey = $('#honeypot');
 
 	// Mobile Nav Toggle Open and Close Action
 
@@ -43,12 +42,12 @@ $(document).ready(function() {
 	// Nav bar sticking to top
 
 	$window.scroll(function() {
-		if (home.length) {
+		if (!$('.nav-container.top-fixed').length) {
 			navPlacement($window, navContainer, navDistance);
 		}
 	});
 
-	if (home.length) {
+	if (!$('.nav-container.top-fixed').length) {
 		setDistances(navContainer);
 	}
 
@@ -89,12 +88,6 @@ $(document).ready(function() {
 			scrollTop: position
 		}, 1000,function() {});
 	});
-
-	//Insert Honeypot into contact form
-
-	// if (honey.length) {
-	// 	honey.append('<input type="checkbox" id="hahabots" class="haha-checkbox" required><label for="hahabots" class="haha-style"> <span>Yep, I\'m human.</span></label>');
-	// }
 
 	//Contact script
 
