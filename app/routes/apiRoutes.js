@@ -1,5 +1,8 @@
 const nodemailer = require("nodemailer");
-const emailCreds = require("../config/email.json")["production"];
+var emailCreds = require("../config/email.json")["production"];
+if (process.env.SMTP_URL) {
+    emailCreds = process.env.SMTP_URL;
+}
 
 const email = nodemailer.createTransport(emailCreds);
 
