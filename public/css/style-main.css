@@ -123,6 +123,7 @@ p:last-of-type {
 		position:relative;
 		height: 100vh;
 		width: 100%;
+		background-image: url(../img/rain.jpg?123);
 	}
 
 	.home-header > .content {
@@ -490,6 +491,7 @@ DESKTOP STYLES
 			position:relative;
 			height: 100vh;
 			width: 100%;
+			background: transparent;
 		}
 
 		.home-header > .content {

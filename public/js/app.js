@@ -1,3 +1,7 @@
+if ($(window).width() < 768) {
+	$('.dr-vid-header').remove();
+}
+
 $(document).foundation();
 
 $(window).on('load', function() {
