@@ -1,0 +1,16 @@
+{
+    "development": {
+      "host": "smtp.mailtrap.io",
+      "port": "587",
+      "secure": "false"
+    },
+    "production": {
+        "host": "secureus106.sgcpanel.com",
+        "port": "465",
+        "secure": "true",
+        "auth": {
+            "user": "amanda@digitalrainstorm.com",
+            "pass": "dr!Nmb20"
+        }
+    }
+}
