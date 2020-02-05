@@ -1,0 +1,13 @@
+{
+    "development": {
+      "username": "root",
+      "password": "root",
+      "database": "digitalr_dr",
+      "host": "localhost",
+      "dialect": "mysql"
+    },
+    "production": {
+      "use_env_variable": "JAWSDB_URL",
+      "dialect": "mysql"
+    }
+  }
