@@ -17,7 +17,7 @@ require("./app/routes/htmlRoutes.js")(app);
 const db = require("./app/models");
 
 db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
+    app.listen(PORT, '0.0.0.0', function() {
       console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
     });
 });
