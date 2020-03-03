@@ -10,7 +10,7 @@ The portfolio site for my freelance business was previously running on a custom 
 
 ## View Online
 
-You can currently [view the updated site on Heroku](https://shielded-savannah-19423.herokuapp.com/). It is soon to be deployed to its namesake URL.
+You can currently [view the updated site on Heroku](https://digitalrainstorm.herokuapp.com/). It is soon to be deployed to its namesake URL.
 
 ## Screenshots
 
